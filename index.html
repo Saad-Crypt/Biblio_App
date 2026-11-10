@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#10172b">
+<meta name="description" content="مكتبة التطبيقات الشخصية - استورد تطبيقات HTML ومشاريع ZIP وشغّلها ونظّمها محلياً">
+<title>مكتبة التطبيقات الشخصية</title>
+<style>
+:root{--bg:#0b1020;--panel:#141d33;--panel2:#1a2742;--text:#edf3ff;--muted:#9eacc8;--line:#2b3a59;--accent:#8b7cff;--accent2:#39c6c8;--danger:#ff6b7a;--shadow:0 18px 50px #0005}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#28345e 0,transparent 42%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;color:inherit}
+.app{max-width:1180px;margin:auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:8px 0 22px}.brand{display:flex;align-items:center;gap:13px}.logo{width:54px;height:54px;border-radius:17px;background:linear-gradient(145deg,#8c7bff,#36c7c9);display:grid;place-items:center;font-size:27px;box-shadow:0 10px 28px #7064ff55}.brand h1{font-size:clamp(19px,4vw,27px);margin:0}.brand p{color:var(--muted);margin:4px 0 0;font-size:12px}.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:11px 15px;border-radius:12px;background:var(--panel2);border:1px solid var(--line);font-weight:650}.btn.primary{background:linear-gradient(120deg,#7869ef,#4b91d9);border:0}.btn.ghost{background:transparent}.btn.danger{color:#ff9ca6;border-color:#78404d}.btn:active{transform:scale(.98)}
+.hero{padding:22px;border:1px solid #39476a;border-radius:22px;background:linear-gradient(115deg,#1c2a49,#171d37 65%,#243b58);box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:18px}.hero h2{margin:0 0 8px;font-size:22px}.hero p{margin:0;color:#bdc9e2;line-height:1.7;font-size:14px}.hero-art{font-size:64px;filter:drop-shadow(0 10px 15px #0005)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.stat{background:#121b30;border:1px solid var(--line);padding:13px;border-radius:15px}.stat strong{display:block;font-size:23px}.stat span{color:var(--muted);font-size:12px}
+.toolbar{display:flex;gap:9px;align-items:center;margin:15px 0;flex-wrap:wrap}.search{flex:1;min-width:170px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--text);outline:none}.search:focus,input:focus,textarea:focus{border-color:var(--accent)}select,.field{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:11px;border-radius:11px}
+.filters{display:flex;gap:7px;overflow:auto;padding:2px 0 12px}.chip{white-space:nowrap;padding:8px 13px;border-radius:30px;background:#18233a;border:1px solid var(--line);color:var(--muted);font-size:13px}.chip.active{background:#5146a6;color:white;border-color:#8b7cff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:13px}.card{background:linear-gradient(150deg,#18233b,#111a2d);border:1px solid var(--line);border-radius:18px;padding:15px;min-width:0;transition:.2s;position:relative}.card:hover{transform:translateY(-3px);border-color:#6874b7}.cardhead{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.appicon{width:54px;height:54px;border-radius:16px;background:linear-gradient(145deg,#34466b,#202b48);display:grid;place-items:center;font-size:28px}.dots{background:transparent;color:var(--muted);font-size:22px;padding:0 5px}.card h3{margin:13px 0 5px;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.meta{font-size:11px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}.desc{font-size:12px;color:#bdc8dc;line-height:1.6;min-height:38px;margin:10px 0}.cardactions{display:flex;gap:7px}.cardactions .btn{flex:1;padding:9px 8px;font-size:12px}
+.empty{border:1px dashed #405071;border-radius:20px;padding:40px 20px;text-align:center;color:var(--muted);grid-column:1/-1}.empty .big{font-size:46px;margin-bottom:10px}.empty h3{color:var(--text);margin:5px}
+.footer{text-align:center;color:#71809e;font-size:11px;padding:28px 5px}
+.modal{position:fixed;inset:0;background:#050914c9;display:none;align-items:center;justify-content:center;padding:14px;z-index:20}.modal.show{display:flex}.dialog{width:min(560px,100%);max-height:90vh;overflow:auto;background:#131e34;border:1px solid #405071;border-radius:20px;padding:20px;box-shadow:var(--shadow)}.dialog h2{margin:0 0 15px}.formrow{display:grid;gap:7px;margin:12px 0}.formrow label{font-size:13px;color:#c3cde1}.formrow input,.formrow textarea,.formrow select{width:100%;padding:12px;background:#0c1528;color:white;border:1px solid var(--line);border-radius:10px}.formrow textarea{min-height:85px;resize:vertical}.dialog-actions{display:flex;gap:8px;justify-content:flex-start;margin-top:18px;flex-wrap:wrap}.hint{font-size:11px;color:var(--muted);line-height:1.7}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#26385b;color:white;padding:12px 18px;border-radius:30px;z-index:40;transition:.25s;box-shadow:var(--shadow);max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+.viewer{position:fixed;inset:0;background:#080d18;z-index:30;display:none;flex-direction:column}.viewer.show{display:flex}.viewerbar{height:58px;background:#141e32;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:8px 12px;gap:8px}.viewerbar strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.viewer iframe{border:0;background:white;flex:1;width:100%}
+body.light{--bg:#eef2fb;--panel:#fff;--panel2:#f5f7ff;--text:#17213a;--muted:#66738f;--line:#d6deed;background:#eef2fb;color:var(--text)}body.light .hero{background:linear-gradient(120deg,#dce5ff,#f4eaff)}body.light .hero p{color:#465573}body.light .card{background:#fff}body.light .desc{color:#5b6680}body.light .stat{background:white}body.light .chip{background:#fff}
+@media(max-width:560px){.app{padding:13px}.top{align-items:flex-start}.top-actions .btn{padding:9px 10px;font-size:12px}.hero{padding:17px}.hero-art{font-size:48px}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:11px}.appicon{width:47px;height:47px}.cardactions .btn{font-size:11px}.card h3{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <div class="brand"><div class="logo">▦</div><div><h1>مكتبة التطبيقات الشخصية</h1><p>كل تطبيقاتك في مكان واحد · إصدار 1.0</p></div></div>
+ <div class="top-actions"><button class="btn ghost" id="themeBtn" title="تبديل المظهر">☼</button><button class="btn" id="backupBtn">نسخة احتياطية</button></div>
+</header>
+<section class="hero">
+ <div><h2>مرحباً بك في مكتبتك الرقمية ✨</h2><p>استورد تطبيقات HTML أو مشاريع ZIP، نظّمها، شغّلها، واحتفظ بنسخك محلياً على هذا الجهاز.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:15px"><button class="btn primary" id="addHtml">＋ إضافة HTML</button><button class="btn" id="addZip">⇧ استيراد ZIP</button></div></div>
+ <div class="hero-art">📚</div>
+</section>
+<section class="stats">
+ <div class="stat"><strong id="totalCount">0</strong><span>تطبيق في المكتبة</span></div>
+ <div class="stat"><strong id="favCount">0</strong><span>المفضلة</span></div>
+ <div class="stat"><strong id="storageCount">محلي</strong><span>مكان الحفظ</span></div>
+</section>
+<div class="toolbar"><input id="search" class="search" placeholder="ابحث عن تطبيق بالاسم..." aria-label="بحث"><select id="sort"><option value="new">الأحدث أولاً</option><option value="az">الاسم أ - ي</option><option value="old">الأقدم أولاً</option></select><button class="btn" id="restoreBtn">استعادة</button></div>
+<div class="filters" id="filters"><button class="chip active" data-filter="all">الكل</button><button class="chip" data-filter="fav">★ المفضلة</button><button class="chip" data-filter="html">HTML</button><button class="chip" data-filter="zip">مشاريع ZIP</button></div>
+<main class="grid" id="grid"><div class="empty"><div class="big">🗂️</div><h3>مكتبتك تنتظر أول تطبيق</h3><p>أضف ملف HTML أو استورد مشروع ZIP للبدء.</p></div></main>
+<footer class="footer">مكتبة التطبيقات الشخصية · تخزين محلي على جهازك · لا يتم رفع ملفاتك إلى أي خادم</footer>
+</div>
+<input type="file" id="htmlInput" accept=".html,.htm,text/html" hidden>
+<input type="file" id="zipInput" accept=".zip,application/zip" hidden>
+<input type="file" id="backupInput" accept=".json,application/json" hidden>
+<div class="modal" id="editModal"><div class="dialog"><h2 id="modalTitle">إضافة تطبيق</h2>
+ <div class="formrow"><label>اسم التطبيق</label><input id="appName" maxlength="60" placeholder="مثال: مصحفي الإلكتروني"></div>
+ <div class="formrow"><label>الأيقونة (رمز تعبيري)</label><input id="appIcon" maxlength="4" value="📱"></div>
+ <div class="formrow"><label>التصنيف</label><select id="appCategory"><option>عام</option><option>قرآن وعلوم شرعية</option><option>كتب وقراءة</option><option>أدوات وإنتاجية</option><option>تعليم</option><option>وسائط</option><option>زراعة وطبيعة</option><option>ألعاب</option></select></div>
+ <div class="formrow"><label>وصف مختصر</label><textarea id="appDesc" maxlength="220" placeholder="نبذة عن التطبيق..."></textarea></div>
+ <p class="hint">يمكن تعديل الاسم والتصنيف والوصف والأيقونة لاحقاً. ملفات المشروع تبقى محفوظة داخل قاعدة البيانات المحلية.</p>
+ <div class="dialog-actions"><button class="btn primary" id="saveEdit">حفظ</button><button class="btn" id="cancelEdit">إلغاء</button></div>
+</div></div>
+<div class="viewer" id="viewer"><div class="viewerbar"><strong id="viewerTitle">التطبيق</strong><div style="display:flex;gap:7px"><button class="btn" id="reloadApp">↻</button><button class="btn" id="closeViewer">إغلاق ✕</button></div></div><iframe id="appFrame" sandbox="allow-scripts allow-forms allow-modals allow-pointer-lock allow-downloads"></iframe></div>
+<div class="toast" id="toast"></div>
+<script>
+'use strict';
+const DB_NAME='PersonalAppLibraryDB',DB_VERSION=1,STORE='apps';
+let db,apps=[],filter='all',editingId=null,activeApp=null;
+const $=id=>document.getElementById(id);
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains(STORE)){const s=d.createObjectStore(STORE,{keyPath:'id'});s.createIndex('updated','updated')}};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+function tx(mode='readonly'){return db.transaction(STORE,mode).objectStore(STORE)}
+function allApps(){return new Promise((res,rej)=>{const r=tx().getAll();r.onsuccess=()=>res(r.result||[]);r.onerror=()=>rej(r.error)})}
+function putApp(a){return new Promise((res,rej)=>{const r=tx('readwrite').put(a);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function deleteApp(id){return new Promise((res,rej)=>{const r=tx('readwrite').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function uid(){return 'app_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,8)}
+function escapeHtml(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){const q=$('search').value.trim().toLowerCase();let list=apps.filter(a=>(filter==='all'||(filter==='fav'&&a.favorite)||(filter==='html'&&a.kind==='html')||(filter==='zip'&&a.kind==='zip'))&&(`${a.name} ${a.description||''} ${a.category||''}`).toLowerCase().includes(q));const sort=$('sort').value;if(sort==='az')list.sort((a,b)=>a.name.localeCompare(b.name,'ar'));else if(sort==='old')list.sort((a,b)=>a.created-b.created);else list.sort((a,b)=>b.updated-a.updated);
+$('totalCount').textContent=apps.length;$('favCount').textContent=apps.filter(a=>a.favorite).length;const grid=$('grid');if(!list.length){grid.innerHTML=`<div class="empty"><div class="big">${apps.length?'🔎':'🗂️'}</div><h3>${apps.length?'لا توجد نتائج':'مكتبتك تنتظر أول تطبيق'}</h3><p>${apps.length?'جرّب تغيير عبارة البحث أو التصنيف.':'أضف ملف HTML أو استورد مشروع ZIP للبدء.'}</p></div>`;return}
+grid.innerHTML=list.map(a=>`<article class="card"><div class="cardhead"><div class="appicon">${escapeHtml(a.icon||'📱')}</div><button class="dots" data-action="menu" data-id="${a.id}" aria-label="خيارات">⋮</button></div><h3 title="${escapeHtml(a.name)}">${escapeHtml(a.name)}</h3><div class="meta"><span>${a.kind==='zip'?'📦 مشروع ZIP':'🌐 HTML'}</span><span>${escapeHtml(a.category||'عام')}</span></div><p class="desc">${escapeHtml(a.description||'لا يوجد وصف لهذا التطبيق بعد.')}</p><div class="cardactions"><button class="btn primary" data-action="open" data-id="${a.id}">تشغيل</button><button class="btn" data-action="edit" data-id="${a.id}">تعديل</button></div></article>`).join('')}
+async function refresh(){apps=await allApps();render()}
+function openEditor(a=null){editingId=a?.id||null;$('modalTitle').textContent=a?'تعديل بيانات التطبيق':'بيانات التطبيق الجديد';$('appName').value=a?.name||'';$('appIcon').value=a?.icon||'📱';$('appCategory').value=a?.category||'عام';$('appDesc').value=a?.description||'';$('editModal').classList.add('show')}
+function closeEditor(){$('editModal').classList.remove('show')}
+$('saveEdit').onclick=async()=>{const name=$('appName').value.trim();if(!name){toast('اكتب اسم التطبيق أولاً');return}const a=apps.find(x=>x.id===editingId);if(!a){toast('تعذر العثور على التطبيق');return}a.name=name;a.icon=$('appIcon').value.trim()||'📱';a.category=$('appCategory').value;a.description=$('appDesc').value.trim();a.updated=Date.now();await putApp(a);closeEditor();await refresh();toast('تم حفظ التعديلات')};
+$('cancelEdit').onclick=closeEditor;
+$('addHtml').onclick=()=>$('htmlInput').click();$('addZip').onclick=()=>$('zipInput').click();
+$('htmlInput').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const content=await f.text();const a={id:uid(),name:f.name.replace(/\.(html?|HTML?)$/,''),icon:'🌐',category:'عام',description:'تطبيق HTML مستورد',kind:'html',entry:'index.html',files:{'index.html':content},favorite:false,created:Date.now(),updated:Date.now()};await putApp(a);await refresh();toast('تم استيراد التطبيق بنجاح');openEditor(a)}catch(err){toast('تعذر قراءة الملف')}e.target.value=''};
+$('zipInput').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(!window.JSZip){await loadZipLib()}const zip=await JSZip.loadAsync(f);const files={};let entry='';for(const [path,obj] of Object.entries(zip.files)){if(obj.dir)continue;const clean=path.replace(/^\.?\//,'');if(clean.startsWith('__MACOSX/'))continue;const blob=await obj.async('base64');files[clean]={base64:blob};if(/(^|\/)index\.html?$/i.test(clean)&&(!entry||clean.split('/').length<entry.split('/').length))entry=clean}if(!Object.keys(files).length)throw Error('empty');if(!entry){const first=Object.keys(files).find(x=>/\.html?$/i.test(x));if(!first)throw Error('nohtml');entry=first}const a={id:uid(),name:f.name.replace(/\.zip$/i,''),icon:'📦',category:'عام',description:'مشروع ويب مستورد من ZIP',kind:'zip',entry,files,favorite:false,created:Date.now(),updated:Date.now()};await putApp(a);await refresh();toast('تم استيراد المشروع بنجاح');openEditor(a)}catch(err){toast(err.message==='nohtml'?'لم نعثر على ملف HTML داخل ZIP':'تعذر فتح ZIP. تحقق من سلامة الملف')}e.target.value=''};
+function loadZipLib(){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';s.onload=resolve;s.onerror=()=>reject(Error('JSZip unavailable'));document.head.appendChild(s)})}
+function appFiles(a){const out={};for(const [k,v] of Object.entries(a.files||{})){out[k]=typeof v==='string'?v:atob(v.base64||'')}return out}
+function makeDoc(a){const files=appFiles(a),base=a.entry||'index.html';let html=files[base]||files['index.html']||'<h2>تعذر العثور على صفحة البداية</h2>';const prefix=base.includes('/')?base.slice(0,base.lastIndexOf('/')+1):'';html=html.replace(/(src|href)=("|')([^"']+)\2/gi,(m,attr,quote,url)=>{if(/^(https?:|data:|#|mailto:|tel:|javascript:)/i.test(url))return m;const path=(prefix+url.split('?')[0].split('#')[0]).replace(/\/\.\//g,'/');if(files[path]!==undefined){const value=files[path];const ext=path.split('.').pop().toLowerCase();const mime={css:'text/css',js:'text/javascript',png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',svg:'image/svg+xml',gif:'image/gif',webp:'image/webp',woff:'font/woff',woff2:'font/woff2'}[ext]||'application/octet-stream';return `${attr}=${quote}data:${mime};base64,${btoa(unescape(encodeURIComponent(value)))}${quote}`}return m});return html}
+function openApp(id){const a=apps.find(x=>x.id===id);if(!a)return;activeApp=a;$('viewerTitle').textContent=a.name;$('appFrame').srcdoc=makeDoc(a);$('viewer').classList.add('show')}
+$('closeViewer').onclick=()=>{$('viewer').classList.remove('show');$('appFrame').srcdoc='';activeApp=null};$('reloadApp').onclick=()=>{if(activeApp)openApp(activeApp.id)};
+$('grid').onclick=async e=>{const b=e.target.closest('[data-action]');if(!b)return;const a=apps.find(x=>x.id===b.dataset.id);if(!a)return;switch(b.dataset.action){case'open':openApp(a.id);break;case'edit':openEditor(a);break;case'menu':{const action=prompt('اكتب رقم العملية:\n1 - المفضلة\n2 - إعادة التسمية/تعديل البيانات\n3 - تصدير ZIP\n4 - حذف التطبيق');if(action==='1'){a.favorite=!a.favorite;a.updated=Date.now();await putApp(a);await refresh()}else if(action==='2')openEditor(a);else if(action==='3')exportApp(a);else if(action==='4'&&confirm('هل تريد حذف '+a.name+' نهائياً؟')){await deleteApp(a.id);await refresh();toast('تم حذف التطبيق')}break}}};
+async function exportApp(a){try{if(!window.JSZip)await loadZipLib();const z=new JSZip();for(const [p,c] of Object.entries(appFiles(a)))z.file(p,c);z.file('library-app-info.json',JSON.stringify({name:a.name,category:a.category,description:a.description,entry:a.entry},null,2));const blob=await z.generateAsync({type:'blob'});downloadBlob(blob,(a.name||'app')+'.zip');toast('تم تجهيز ملف ZIP')}catch(e){toast('تعذر إنشاء ZIP')}}
+function downloadBlob(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500)}
+$('backupBtn').onclick=async()=>{const data=await allApps();downloadBlob(new Blob([JSON.stringify({format:'PersonalAppLibraryBackup',version:1,apps:data},null,2)],{type:'application/json'}),'personal-app-library-backup.json');toast('تم إنشاء النسخة الاحتياطية')};
+$('restoreBtn').onclick=()=>$('backupInput').click();
+$('backupInput').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data.apps))throw Error();for(const a of data.apps){if(a.id&&a.files)await putApp(a)}await refresh();toast('تمت استعادة النسخة الاحتياطية')}catch(err){toast('ملف النسخة الاحتياطية غير صالح')}e.target.value=''};
+$('search').oninput=render;$('sort').onchange=render;
+$('filters').onclick=e=>{const b=e.target.closest('[data-filter]');if(!b)return;filter=b.dataset.filter;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===b));render()};
+$('themeBtn').onclick=()=>{document.body.classList.toggle('light');localStorage.setItem('pal-theme',document.body.classList.contains('light')?'light':'dark')};if(localStorage.getItem('pal-theme')==='light')document.body.classList.add('light');
+(async()=>{try{if(!('indexedDB'in window))throw Error();db=await openDB();await refresh()}catch(e){$('grid').innerHTML='<div class="empty"><h3>التخزين غير متاح</h3><p>افتح التطبيق في متصفح حديث يدعم IndexedDB.</p></div>'}})();
+</script>
+</body>
+</html>
